@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+Nesse módulo entenderemos como Next.js transforma a nossa maneira de desenvolver aplicações front-end e descobrimos conceitos importantes como SSR e SSG
 
 ```bash
 npm run dev
