@@ -1,9 +1,11 @@
-import { GetServerSideProps } from 'next' //SSG
+import { GetStaticProps } from 'next' //SSG
 import { stripe } from '../services/stripe'
 
 import styles from './home.module.scss'
 import Head from 'next/head'
 import { SubscribeButton } from '../components/SubscribeButton'
+
+
 
 
 interface HomeProps{
@@ -37,7 +39,7 @@ export default function Home({ product }:HomeProps) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetStaticProps = async () => {
   const price = await stripe.prices.retrieve('price_1IdEk1IA6LvOAWiPFVCarI09',{ //1
     expand: ['product']//2
   })
@@ -52,9 +54,24 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props:{
       product
-    }
+    },
+    revalidate: 60 * 60 * 24, // 24 hours
   }
 }
+
+
+
+
+// Client-side
+// Server-side Rendering
+// Static Site Generation
+
+// Post o blog 
+
+// login perfil (SSR)
+// Conteudo (SSG) *retorna static pra todo mundo
+// Comentátios (Client-side) *retorna durante o processo
+
 
 
 /** Stripe( API de pagamentos)
@@ -73,12 +90,26 @@ export const getServerSideProps: GetServerSideProps = async () => {
 /** SSR(Server-side Rendering)
  *  Fazendo chamadas http usando SSR(Server-side Rendering)
  *  Ele não pode ser chamado em componente, tem que ser chamado na pagina
- *  e depois passado para o componen 
+ *  e depois passado para o component.
+ *  
+ *  ** atenção:  usamos o SSR para paginas dinamica.
+ *  Exemplo: Retornar informações do usuario logado.
+ */
+
+
+/** SSR(Static Site Generation)
+ *  Quando uma pessoa acessa pela primeira vez a pagina, o next gera um html
+ *  estatico da pagina, e retorna a pagina para o client, sem precisa fazer o processo novamente
+ *  precisamos alterar de getServerSideProps para GetStaticProps e acresentar no return o,
+ *  revalidate: 60 * 60 * 24, //hours atualiza a pagina estatica a cada 24hr.
+ * 
+ * ** atenção: usamos o SSG para paginas Static, onde não precisamo trocar informações com frequencia.
+ * Exemplo: SSG for aplicado em uma Perfil de usuario, mesmo que outros façam o login, vai sempre aparece o perfil do primeiro usuario que logou.
  * 
  */
 
 
-/*CSR(Cliente-side Rendering) 
+/*CSR(Client-side Rendering) 
 const [product] = useState()
 
 useEffect(() => {
