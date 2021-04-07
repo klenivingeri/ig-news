@@ -39,7 +39,7 @@ export default function Home({ product }:HomeProps) {
   )
 }
 
-export const getServerSideProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const price = await stripe.prices.retrieve('price_1IdEk1IA6LvOAWiPFVCarI09',{ //1
     expand: ['product']//2
   })
@@ -109,7 +109,8 @@ export const getServerSideProps: GetStaticProps = async () => {
  */
 
 
-/*CSR(Client-side Rendering) 
+/* 
+CSR(Client-side Rendering) 
 const [product] = useState()
 
 useEffect(() => {
