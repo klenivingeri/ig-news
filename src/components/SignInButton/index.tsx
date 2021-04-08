@@ -6,9 +6,9 @@ import { signIn, signOut, useSession } from 'next-auth/client' //função que fa
 import  styles from './styles.module.scss'
 export function SignInButton() {
 
-    const [ session ] =  useSession() // returna se o usuario está logado ou não
+    const [ session ] =  useSession() // se o usuario não estiver logado retorna null
 
-    console.log(session);
+    console.log(session, 'haha');
     return session ?(
         <button 
         type="button"
