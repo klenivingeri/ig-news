@@ -17,7 +17,7 @@ interface HomeProps{
 
 
 export default function Home({ product }:HomeProps) {
-  console.log(product)
+ // console.log(product) //4
   return (
       <>  
         <Head>
@@ -84,6 +84,8 @@ export const getStaticProps: GetStaticProps = async () => {
  *  
  * 3 ) unit_amount pega o preço unitario(inteiro) do obj / 100 para ter o preço em centavos
  *     para facilitar a manipulaçao
+ * 
+ * 4 ) retorno do getStaticProps
  */
 
 

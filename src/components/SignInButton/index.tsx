@@ -8,7 +8,7 @@ export function SignInButton() {
 
     const [ session ] =  useSession() // se o usuario não estiver logado retorna null
 
-    console.log(session, 'haha');
+   // console.log(session, 'RT_session');
     return session ?(
         <button 
         type="button"
