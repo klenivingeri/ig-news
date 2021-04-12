@@ -4,7 +4,8 @@ import { stripe } from '../../../services/stripe';
 
 export async function saveSubstription(
     subscriptionId: string,
-    customerId: string
+    customerId: string,
+    createAction:boolean
 ){
     // Buscando o Usuário no banco do FaunaDB pelo ID
 
@@ -22,7 +23,7 @@ export async function saveSubstription(
 
     const subscription = await stripe.subscriptions.retrieve(subscriptionId)
 
-    console.log(subscription ,' verificanso dados')
+    //console.log(subscription ,' verificanso dados')
     const subscriptionData = {
         id: subscription.id,
         userId: userRef,
@@ -31,14 +32,32 @@ export async function saveSubstription(
     }
 
 
-    console.log(subscriptionData)
-    await fauna.query(
-        q.Create(
-            q.Collection('subscriptions'),
-            { data: subscriptionData}
+    if (createAction) {
+        await fauna.query(
+            q.Create(
+                q.Collection('subscriptions'),
+                { data: subscriptionData}
+            )
         )
-    )
+    }else{
+        await fauna.query( //1
+            q.Replace(
+                q.Select(
+                    "ref",
+                    q.Get(
+                        q.Match(
+                            q.Index('subscriptions_by_id'),
+                            subscriptionId,
+                        )
+                    )
+                ),
+                { data: subscriptionData}
+            )
+        )
 
+    }
+
+    
 
 
     // Salvar os dados da substription no FaunaDB
@@ -52,4 +71,10 @@ q.Get(
         customerId
     )
 )
-*/
+
+ para comsumir menos trafego possivel , precisamos retornar apenas  oque é necessário 
+
+
+    1 ) Atualiza dados no banco
+
+ */
