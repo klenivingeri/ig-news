@@ -32,3 +32,44 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
+
+-------------------------------------
+JAMStack
+
+=> JavaScript
+=> API
+=> Markup
+
+------------------------------------
+
+CMS (Content Management System)
+
+- Wordpress
+x Drupal
+x Joomla
+x Magento (E-commerce)
+
+Headless CMS ( Painel de Adminstração  + API, HTTP, GraphQL, SDK)
+
+---- Gratuito ----
+
+- Strapi (Qualquer tipo de conteudo) projetos pequenos
+- Ghost (Blog)
+- Keystone
+
+------ Pagos ------
+- GraphCMS  - projetos pequenos
+- Prismic CMS - projetos pequenos
+- Contentfull -  projetos grandes
+
+- Shopify (E-commerce)
+- Saleor  (E-commerce)
+
+
+
+
+
+
