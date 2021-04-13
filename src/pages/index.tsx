@@ -86,6 +86,8 @@ export const getStaticProps: GetStaticProps = async () => {
  *     para facilitar a manipulaçao
  * 
  * 4 ) retorno do getStaticProps
+ * 
+ * 
  */
 
 

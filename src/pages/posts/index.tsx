@@ -37,6 +37,7 @@ export default function Posts( { posts }: PostsProps) {
                 ))}
             </div>
         </main>
+        
 
         </>
     );
