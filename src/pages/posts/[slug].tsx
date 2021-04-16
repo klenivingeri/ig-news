@@ -14,7 +14,7 @@ interface PostProps{
     }
 }
 
-export default function Post( {post}: PostProps){
+export default function PostPreview( {post}: PostProps){
 
     return(
     <>
@@ -43,12 +43,12 @@ export const getServerSideProps: GetServerSideProps = async ({ req, params}) =>{
     const session = await getSession({req}); //1
     const { slug } = params;
     
-  
+
 
     if(!session?.activeSubscription){
         return{
             redirect:{
-                destination:'/',
+                destination:`/posts/preview/${slug}`,
                 permanent:false,
             }
         }
